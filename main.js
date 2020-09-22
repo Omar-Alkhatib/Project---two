@@ -50,10 +50,15 @@ const videos = [
   const header = $("#header");
   header.text(headerText);
 
+  
   const ul = $("#video_list")
+  
+  const renderVideoList = function() {
 
+  
   videos.forEach(function(elem, ind){
 
+    
     const li = $(`<li class="video_card_container"></li>`);
     const img = $(`<img class=image src = ${elem.thumbnail}></img>`)
     const divTitleAndChannel = $(`<div class= "title_channel_container"></div>`)
@@ -65,12 +70,16 @@ const videos = [
     divTitleAndChannel.append(divChannel);
     li.append(divTitleAndChannel)
     ul.append(li);
-    li.on("click", function(){playVideo(elem)})
+    li.on("click", function(){playVideo(elem, ind, li)})
   })
+
+}
+  
+  renderVideoList();
 
   const screenAndTitleContainer = $("#screen_title_container");
 
-  const playVideo = function(video){
+  const playVideo = function(video, index, listView) {
 
     
     const iframe = $("#iframe");
@@ -79,7 +88,26 @@ const videos = [
     videoTitle.text(video.title);
     // videoTitle.css("font-weight", "bold")
     videoTitle.css("font-size", "1.5rem")
-
+    // console.log(video)
+    // console.log(index)
+    let obj = videos.splice(index,1)[0];
+    // console.log(obj)
+    videos.push(obj);
+    // console.log(videos)
+    listView.remove()
+    // renderVideoList();
     
-  }
+    const li = $(`<li class="video_card_container"></li>`);
+    const img = $(`<img class=image src = ${video.thumbnail}></img>`)
+    const divTitleAndChannel = $(`<div class= "title_channel_container"></div>`)
+    const divTitle = $(`<div class= "title"> ${video.title} </div>`)
+    const divChannel = $(`<div class= "channel_name"> ${video.channel} </div>`)
+
+    li.append(img);
+    divTitleAndChannel.append(divTitle);
+    divTitleAndChannel.append(divChannel);
+    li.append(divTitleAndChannel)
+    ul.append(li);
+    li.on("click", function(){playVideo(elem, ind, li)})
+    }
 
