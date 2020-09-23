@@ -46,31 +46,71 @@ const videos = [
     },
   ];
 
-  let headerText = "This is you6ube";
-  const header = $("#header");
-  header.text(headerText);
+  // let headerText = "This is you6ube";
+  // const header = $("#header");
+  // header.text(headerText);
 
-  
-  const ul = $("#video_list")
-  
+  const videoListContainer = $(`#video_list_container`);
+  videoListContainer.css({
+    'display': 'flex',
+    'flex-direction': 'column',
+    'border-style': 'dotted',
+    'border-color': 'blue',
+    'width': '24rem',
+    'padding-left': '0'
+  })  
   const renderVideoList = function() {
 
+  const ul = $(`<ul id = "video_list"></ul>`);
+  ul.css({
+    'margin-left': '0',
+    'padding-left': '0',
+    'list-style-type': 'none'
+  })
+  videoListContainer.append(ul);
   
   videos.forEach(function(elem, ind){
 
-    
     const li = $(`<li class="video_card_container"></li>`);
+    li.css({
+    'display': 'flex',
+    'flex-direction': 'row',
+    'border-style': 'dotted',
+    'border-color': 'indianred',
+    })
     const img = $(`<img class=image src = ${elem.thumbnail}></img>`)
+    img.css({
+    'margin-left': '0',
+    'width': '10rem',
+    'height': '6rem'
+    })
     const divTitleAndChannel = $(`<div class= "title_channel_container"></div>`)
+    divTitleAndChannel.css({
+    'display': 'flex',
+    'flex-direction': 'column',
+    'border-style': 'dotted',
+    'border-color': 'red'
+    })
     const divTitle = $(`<div class= "title"> ${elem.title} </div>`)
+    divTitle.css({
+    'font-weight': 'bold',
+    'border-style': 'dotted',
+    'border-color': 'blue',
+    'flex-wrap': 'wrap',
+    })
     const divChannel = $(`<div class= "channel_name"> ${elem.channel} </div>`)
+    divChannel.css({
+    'color': 'grey',
+    'border-style': 'dotted',
+    'border-color':'green'
+    })
 
     li.append(img);
     divTitleAndChannel.append(divTitle);
     divTitleAndChannel.append(divChannel);
     li.append(divTitleAndChannel)
     ul.append(li);
-    li.on("click", function(){playVideo(elem, ind, li)})
+    li.on("click", function(){playVideo(elem, ind, ul)})
   })
 
 }
@@ -79,12 +119,13 @@ const videos = [
 
   const screenAndTitleContainer = $("#screen_title_container");
 
-  const playVideo = function(video, index, listView) {
+  const playVideo = function(video, index, videoListView) {
 
     
     const iframe = $("#iframe");
     iframe.attr("src", `https://www.youtube.com/embed/${video.id}`)
     const videoTitle = $("#Title");
+    videoTitle.css('padding', '20px 0 8px 0')
     videoTitle.text(video.title);
     // videoTitle.css("font-weight", "bold")
     videoTitle.css("font-size", "1.5rem")
@@ -94,20 +135,91 @@ const videos = [
     // console.log(obj)
     videos.push(obj);
     // console.log(videos)
-    listView.remove()
-    // renderVideoList();
+    videoListView.remove()
+    renderVideoList();
     
-    const li = $(`<li class="video_card_container"></li>`);
-    const img = $(`<img class=image src = ${video.thumbnail}></img>`)
-    const divTitleAndChannel = $(`<div class= "title_channel_container"></div>`)
-    const divTitle = $(`<div class= "title"> ${video.title} </div>`)
-    const divChannel = $(`<div class= "channel_name"> ${video.channel} </div>`)
+    // const li = $(`<li class="video_card_container"></li>`);
+    // const img = $(`<img class=image src = ${video.thumbnail}></img>`)
+    // const divTitleAndChannel = $(`<div class= "title_channel_container"></div>`)
+    // const divTitle = $(`<div class= "title"> ${video.title} </div>`)
+    // const divChannel = $(`<div class= "channel_name"> ${video.channel} </div>`)
 
-    li.append(img);
-    divTitleAndChannel.append(divTitle);
-    divTitleAndChannel.append(divChannel);
-    li.append(divTitleAndChannel)
-    ul.append(li);
-    li.on("click", function(){playVideo(elem, ind, li)})
+    // li.append(img);
+    // divTitleAndChannel.append(divTitle);
+    // divTitleAndChannel.append(divChannel);
+    // li.append(divTitleAndChannel)
+    // ul.append(li);
+    // li.on("click", function(){playVideo(elem, ind, li)})
     }
 
+    let searchInput = $("#search_input");
+    let searchButton = $("#search_button");
+    
+ const searchFunction = function () {
+
+  let searchString = searchInput.val();
+
+  console.log(searchString);
+
+    for (i = 0; i < videos.length; i++) {
+
+    if (videos[i].title.includes(searchString, 0)) {
+      console.log("broke in ")
+      
+      $('#video_list').remove()
+      const ul = $(`<ul id = "video_list"></ul>`);
+      ul.css({
+        'margin-left': '0',
+        'padding-left': '0',
+        'list-style-type': 'none'
+      })
+      videoListContainer.append(ul);
+    
+      const li = $(`<li class="video_card_container"></li>`);
+        li.css({
+        'display': 'flex',
+        'flex-direction': 'row',
+        'border-style': 'dotted',
+        'border-color': 'indianred',
+        })
+        const img = $(`<img class=image src = ${videos[i].thumbnail}></img>`)
+        img.css({
+        'margin-left': '0',
+        'width': '10rem',
+        'height': '6rem'
+        })
+        const divTitleAndChannel = $(`<div class= "title_channel_container"></div>`)
+        divTitleAndChannel.css({
+        'display': 'flex',
+        'flex-direction': 'column',
+        'border-style': 'dotted',
+        'border-color': 'red'
+        })
+        const divTitle = $(`<div class= "title"> ${videos[i].title} </div>`)
+        divTitle.css({
+        'font-weight': 'bold',
+        'border-style': 'dotted',
+        'border-color': 'blue',
+        'flex-wrap': 'wrap',
+        })
+        const divChannel = $(`<div class= "channel_name"> ${videos[i].channel} </div>`)
+        divChannel.css({
+        'color': 'grey',
+        'border-style': 'dotted',
+        'border-color':'green'
+        })
+    
+        li.append(img);
+        divTitleAndChannel.append(divTitle);
+        divTitleAndChannel.append(divChannel);
+        li.append(divTitleAndChannel)
+        ul.append(li);
+        li.on("click", function(){playVideo(videos[i], i, ul)})
+        break; 
+        
+        }
+          
+  }
+ };
+
+ searchButton.on("click", searchFunction);

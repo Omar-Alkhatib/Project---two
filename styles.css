@@ -1,10 +1,41 @@
 #header {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    
+    align-items: center;
     height: 3rem;
     /* border-width: 1rem; */
     border-style: dotted;
     border-color: red;
+}
+
+#search_container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#search_input {
+    height: 1.7rem;
+    width: 36rem;
+    border: 1px solid #d3d3d3;
+}
+
+#search_button {
+    height: 1.95rem;
+    width: 4rem;
+    background-color: #f8f8f8;
+    border: 1px solid #d3d3d3;
+    align-items: center;
+    padding: 0%;
+}
+
+#search_img {
+    height: 1rem;
+    width: 1rem;
+    align-self: center;
+    color: black;
 }
 
 #main_container {
@@ -25,56 +56,58 @@
     border-color:green;
 }
 
-#video_list_container {
-    display: flex;
-    flex-direction: column;
-    /* border-width: 1rem; */
-    border-style: dotted;
-    border-color: blue;
-    width: 24rem;
-    padding-left: 0;
+/* #video_list_container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* border-style: dotted; */
+    /* border-color: blue; */
+    /* width: 24rem; */
+    /* width: fit-content; */
+    /* padding-left: 0; */ 
 
-}
+/* } */ 
 
-#video_list {
+/* #video_list {
     margin-left: 0;
     padding-left: 0%;
     list-style-type: none;
-}
+} */
 
-.video_card_container {
+/* .video_card_container {
     display: flex;
     flex-direction: row;
     border-style: dotted;
     border-color:indianred;
-}
+} */
 
-.title_channel_container {
+/* .title_channel_container {
     display: flex;
     flex-direction: column;
     border-style: dotted;
     border-color: red;
-}
+} */
 
-.title {
+/* .title {
     font-weight: bold;
     border-style: dotted;
     border-color: blue;
     flex-wrap: wrap;
-}
+} */
 
-.channel_name {
+/* .channel_name {
     color: grey;
     border-style: dotted;
     border-color:green;
-}
+} */
 
-.image {
+/* .image {
     margin-left: 0;
     width: 10rem;
     height:6rem;
-}
+} */
 
-#Title {
-    margin-top: 1rem;
-}
+/* #Title {
+    padding: 20px 0 8px 0;
+} */
+
+li { cursor: pointer;}
