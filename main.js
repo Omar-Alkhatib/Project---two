@@ -54,8 +54,8 @@ const videos = [
   videoListContainer.css({
     'display': 'flex',
     'flex-direction': 'column',
-    'border-style': 'dotted',
-    'border-color': 'blue',
+    // 'border-style': 'dotted',
+    // 'border-color': 'blue',
     'width': '24rem',
     'padding-left': '0'
   })  
@@ -75,8 +75,10 @@ const videos = [
     li.css({
     'display': 'flex',
     'flex-direction': 'row',
-    'border-style': 'dotted',
-    'border-color': 'indianred',
+    // 'margine': '10px 10px 10px 0',
+    'padding': '5px 0px 5px 0px'
+    // 'border-style': 'dotted',
+    // 'border-color': 'indianred',
     })
     const img = $(`<img class=image src = ${elem.thumbnail}></img>`)
     img.css({
@@ -88,21 +90,22 @@ const videos = [
     divTitleAndChannel.css({
     'display': 'flex',
     'flex-direction': 'column',
-    'border-style': 'dotted',
-    'border-color': 'red'
+    'padding': '0px 0px 0px 5px'
+    // 'border-style': 'dotted',
+    // 'border-color': 'red'
     })
     const divTitle = $(`<div class= "title"> ${elem.title} </div>`)
     divTitle.css({
     'font-weight': 'bold',
-    'border-style': 'dotted',
-    'border-color': 'blue',
+    // 'border-style': 'dotted',
+    // 'border-color': 'blue',
     'flex-wrap': 'wrap',
     })
     const divChannel = $(`<div class= "channel_name"> ${elem.channel} </div>`)
     divChannel.css({
     'color': 'grey',
-    'border-style': 'dotted',
-    'border-color':'green'
+    // 'border-style': 'dotted',
+    // 'border-color':'green'
     })
 
     li.append(img);
@@ -179,8 +182,9 @@ const videos = [
         li.css({
         'display': 'flex',
         'flex-direction': 'row',
-        'border-style': 'dotted',
-        'border-color': 'indianred',
+        'padding': '5px 0px 5px 0px'
+        // 'border-style': 'dotted',
+        // 'border-color': 'indianred',
         })
         const img = $(`<img class=image src = ${videos[i].thumbnail}></img>`)
         img.css({
@@ -192,21 +196,22 @@ const videos = [
         divTitleAndChannel.css({
         'display': 'flex',
         'flex-direction': 'column',
-        'border-style': 'dotted',
-        'border-color': 'red'
+        'padding': '0px 0px 0px 5px'
+        // 'border-style': 'dotted',
+        // 'border-color': 'red'
         })
         const divTitle = $(`<div class= "title"> ${videos[i].title} </div>`)
         divTitle.css({
         'font-weight': 'bold',
-        'border-style': 'dotted',
-        'border-color': 'blue',
+        // 'border-style': 'dotted',
+        // 'border-color': 'blue',
         'flex-wrap': 'wrap',
         })
         const divChannel = $(`<div class= "channel_name"> ${videos[i].channel} </div>`)
         divChannel.css({
         'color': 'grey',
-        'border-style': 'dotted',
-        'border-color':'green'
+        // 'border-style': 'dotted',
+        // 'border-color':'green'
         })
     
         li.append(img);
